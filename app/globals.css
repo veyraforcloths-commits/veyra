@@ -1,8 +1,17 @@
 @import "tailwindcss";
 
+/* ========================
+   GAZU DESIGN SYSTEM
+   ======================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-cream: #ece7e1;
+  --color-cream-light: #f5f2ee;
+  --color-charcoal: #2a2a2a;
+  --color-black: #0a0a0a;
+  --color-white: #ffffff;
+  --background: var(--color-cream);
+  --foreground: var(--color-charcoal);
 }
 
 @theme inline {
@@ -10,17 +19,191 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: 'Audrey', 'Audrey-Bold', var(--font-sans), system-ui, sans-serif;
+
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-fade-in-up: fadeInUp 1s ease-out forwards;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ========================
+   BASE STYLES
+   ======================== */
+
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
 }
+
+::selection {
+  background: var(--color-charcoal);
+  color: var(--color-cream);
+}
+
+/* ========================
+   SCROLLBAR
+   ======================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-charcoal);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-black);
+}
+
+/* ========================
+   ANIMATIONS
+   ======================== */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtlePulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* ========================
+   BUBBLE FLOATING ANIMATIONS
+   ======================== */
+
+@keyframes bubbleFloat1 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-11px) translateX(5px) rotate(3deg);
+  }
+  66% {
+    transform: translateY(-20px) translateX(-3px) rotate(-2deg);
+  }
+}
+
+@keyframes bubbleFloat2 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-16px) translateX(-6px) rotate(-4deg);
+  }
+  66% {
+    transform: translateY(-6px) translateX(4px) rotate(2deg);
+  }
+}
+
+@keyframes bubbleFloat3 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  40% {
+    transform: translateY(-15px) translateX(6px) rotate(4deg);
+  }
+  80% {
+    transform: translateY(-7px) translateX(-4px) rotate(-2deg);
+  }
+}
+
+@keyframes bubbleFloat4 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-13px) translateX(-5px) rotate(3deg);
+  }
+}
+
+.animate-bubble-1 {
+  animation: bubbleFloat1 4.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.animate-bubble-2 {
+  animation: bubbleFloat2 6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.animate-bubble-3 {
+  animation: bubbleFloat3 4.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.animate-bubble-4 {
+  animation: bubbleFloat4 5.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@font-face {
+  font-family: 'Audrey';
+  src: url('/fonts/Audrey-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Audrey';
+  src: url('/fonts/Audrey-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Audrey';
+  src: url('/fonts/Audrey-Normal.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Audrey-Bold';
+  src: url('/fonts/Audrey-Bold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ========================
+   TYPOGRAPHY UTILITIES
+   ======================== */
+
+.font-display {
+  font-family: 'Audrey', var(--font-sans), system-ui, sans-serif;
+}
+
