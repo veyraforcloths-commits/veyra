@@ -43,6 +43,50 @@ body {
   overflow-x: hidden;
 }
 
+/* ========================
+   CUSTOM CURSOR
+   ======================== */
+@media (hover: hover) and (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+@keyframes cursorRipple {
+  0% {
+    width: 8px;
+    height: 8px;
+    opacity: 0.9;
+    border-width: 2px;
+  }
+  100% {
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+    border-width: 0.5px;
+  }
+}
+
+.animate-cursor-ripple {
+  animation: cursorRipple 0.55s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes letterFloat {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(var(--spark-rot, 0deg));
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(-50%, calc(-50% - 24px)) scale(0.6) rotate(calc(var(--spark-rot, 0deg) + 18deg));
+    opacity: 0;
+  }
+}
+
+.animate-letter-float {
+  animation: letterFloat 0.75s cubic-bezier(0.12, 0.8, 0.32, 1) forwards;
+}
+
 ::selection {
   background: var(--color-charcoal);
   color: var(--color-cream);

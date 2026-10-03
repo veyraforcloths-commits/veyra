@@ -66,13 +66,13 @@ export default function HeroSection() {
 
       {/* Decorative 3D Floating Geometry / Light Rings */}
       <div
-        className="absolute top-28 left-[18%] w-72 h-72 rounded-full border border-black/[0.04] pointer-events-none transition-transform duration-500 ease-out"
+        className="absolute top-28 left-[18%] w-72 h-72 rounded-full border border-black/[0.09] pointer-events-none transition-transform duration-500 ease-out"
         style={{
           transform: `translate3d(${mouse.x * -15}px, ${mouse.y * -15}px, 0)`,
         }}
       />
       <div
-        className="absolute bottom-24 right-[25%] w-96 h-96 rounded-full border border-black/[0.03] pointer-events-none transition-transform duration-500 ease-out"
+        className="absolute bottom-24 right-[25%] w-96 h-96 rounded-full border border-black/[0.08] pointer-events-none transition-transform duration-500 ease-out"
         style={{
           transform: `translate3d(${mouse.x * 20}px, ${mouse.y * 20}px, 0)`,
         }}
@@ -80,12 +80,14 @@ export default function HeroSection() {
 
       {/* Top-Left Giant VEYRA Editorial Typography (Expanded to fill designated area) */}
       <div
-        className="absolute top-18 sm:top-20 md:top-22 lg:top-24 left-6 sm:left-10 md:left-14 lg:left-20 pointer-events-none select-none z-[1] transition-transform duration-300 ease-out will-change-transform w-auto max-w-[960px]"
+        data-scroll
+        data-scroll-speed="-0.12"
+        className="absolute top-28 sm:top-20 md:top-32 lg:top-42 left-6 sm:left-10 md:left-14 lg:left-20 pointer-events-none select-none z-[1] transition-transform duration-300 ease-out will-change-transform w-auto max-w-[960px]"
         style={{
           transform: `translate3d(${mouse.x * -24}px, ${mouse.y * -16}px, 0)`,
         }}
       >
-        <p className="text-[10px] sm:text-[11px] md:text-[12px] tracking-[0.38em] font-medium uppercase text-black/60 mb-2 sm:mb-3">
+        <p className="text-[10px] sm:text-[11px] md:text-[12px] tracking-[0.38em] font-medium uppercase text-black/60 mb-4 sm:mb-3">
           MAISON DE MODE • ATELIER 2025
         </p>
 
@@ -93,25 +95,23 @@ export default function HeroSection() {
           className="text-[21vw] sm:text-[17vw] md:text-[14vw] lg:text-[12.5vw] xl:text-[12vw] font-display font-medium leading-[0.84] tracking-[0.06em] text-[var(--color-black)] opacity-100 translate-y-0 whitespace-nowrap"
           style={{
             textShadow:
-              "0 15px 35px rgba(0,0,0,0.07), 0 3px 6px rgba(0,0,0,0.03)",
+              "0 12px 28px rgba(0, 0, 0, 0.22), 0 25px 60px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.10)",
           }}
         >
           VEYRA
         </h1>
 
-        <div className="flex items-center gap-3 mt-3 md:mt-4 opacity-60">
-          <span className="text-[9px] sm:text-[10px] tracking-[0.25em] font-light text-black uppercase">
+        <div className="flex items-center gap-3 pl-43 opacity-60">
+          <span className="text-[9px]  sm:text-[10px] tracking-[0.65em] font-light text-black uppercase">
             Haute Architecture
-          </span>
-          <span className="w-1 h-1 rounded-full bg-black/40" />
-          <span className="text-[9px] sm:text-[10px] tracking-[0.25em] font-light text-black uppercase">
-            Limited Atelier Run
           </span>
         </div>
       </div>
 
       {/* Top-Right Random Floating 3D Bubble Social Cluster */}
       <div
+        data-scroll
+        data-scroll-speed="0.18"
         className="absolute top-18 sm:top-20 md:top-22 lg:top-24 right-6 sm:right-10 md:right-14 lg:right-20 z-30 pointer-events-none w-64 sm:w-72 md:w-80 h-44 sm:h-52"
         style={{
           transform: `perspective(800px) rotateY(${mouse.x * 12}deg) rotateX(${-mouse.y * 12}deg) translate3d(${mouse.x * 16}px, ${mouse.y * 12}px, 20px)`,
@@ -176,14 +176,16 @@ export default function HeroSection() {
         </a>
 
         {/* Decorative Floating Glass Micro-Bubbles */}
-        <div className="absolute top-16 left-0 w-3.5 h-3.5 rounded-full bg-white/70 border border-white/90 shadow-sm animate-bubble-3 pointer-events-none" />
-        <div className="absolute top-10 right-0 w-2.5 h-2.5 rounded-full bg-white/60 border border-white/80 shadow-sm animate-bubble-1 pointer-events-none" />
-        <div className="absolute bottom-2 right-16 w-3 h-3 rounded-full bg-white/60 border border-white/80 shadow-sm animate-bubble-2 pointer-events-none" />
-        <div className="absolute bottom-1 left-6 w-2 h-2 rounded-full bg-white/50 border border-white/70 shadow-sm animate-bubble-4 pointer-events-none" />
+        <div className="absolute top-16 left-0 w-3.5 h-3.5 rounded-full bg-white/70 border transparent border-white/90 shadow-sm animate-bubble-3 pointer-events-none" />
+        <div className="absolute top-10 right-0 w-2.5 h-2.5 rounded-full bg-white/60 border transparent border-white/80 shadow-sm animate-bubble-1 pointer-events-none" />
+        <div className="absolute bottom-2 right-16 w-3 h-3 rounded-full bg-white/60 border transparent border-white/80 shadow-sm animate-bubble-2 pointer-events-none" />
+        <div className="absolute bottom-1 left-6 w-2 h-2 rounded-full bg-white/50 border transparent border-white/70 shadow-sm animate-bubble-4 pointer-events-none" />
       </div>
 
       {/* Center Model Image - Enriched, Enchanced & Magnified */}
       <div
+        data-scroll
+        data-scroll-speed="0.08"
         className="absolute inset-0 flex items-end justify-center pointer-events-none z-10 opacity-100 translate-y-0"
       >
         <div
