@@ -6,8 +6,7 @@ import Link from "next/link";
 import {
   WhatsAppIcon,
   InstagramIcon,
-  FacebookIcon,
-  PinterestIcon,
+  LinkedInIcon,
 } from "../icons";
 
 export default function HeroSection() {
@@ -78,109 +77,114 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Top-Left Giant VEYRA Editorial Typography (Expanded to fill designated area) */}
+      {/* Centered Background Outlined Brand Typography (Reference: VedaFusion style) */}
       <div
         data-scroll
-        data-scroll-speed="-0.12"
-        className="absolute top-28 sm:top-20 md:top-32 lg:top-42 left-6 sm:left-10 md:left-14 lg:left-20 pointer-events-none select-none z-[1] transition-transform duration-300 ease-out will-change-transform w-auto max-w-[960px]"
+        data-scroll-speed="-0.15"
+        className="absolute inset-x-0 top-[42%] sm:top-[40%] -translate-y-1/2 w-full text-center pointer-events-none select-none z-[2] transition-transform duration-300 ease-out will-change-transform"
         style={{
           transform: `translate3d(${mouse.x * -24}px, ${mouse.y * -16}px, 0)`,
         }}
       >
-        <p className="text-[10px] sm:text-[11px] md:text-[12px] tracking-[0.38em] font-medium uppercase text-black/60 mb-4 sm:mb-3">
-          MAISON DE MODE • ATELIER 2025
-        </p>
-
-        <h1
-          className="text-[21vw] sm:text-[17vw] md:text-[14vw] lg:text-[12.5vw] xl:text-[12vw] font-display font-medium leading-[0.84] tracking-[0.06em] text-[var(--color-black)] opacity-100 translate-y-0 whitespace-nowrap"
+        <span
+          className="font-display font-bold uppercase select-none whitespace-nowrap text-[19vw] sm:text-[20vw] md:text-[19vw] lg:text-[18vw] xl:text-[17vw] leading-none tracking-[0.08em] sm:tracking-[0.10em] text-transparent inline-block"
           style={{
-            textShadow:
-              "0 12px 28px rgba(0, 0, 0, 0.22), 0 25px 60px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.10)",
+            WebkitTextStroke: "1.8px rgba(10, 10, 10, 0.22)",
+            textShadow: "0 15px 35px rgba(0, 0, 0, 0.02)",
           }}
         >
           VEYRA
-        </h1>
-
-        <div className="flex items-center gap-3 pl-43 opacity-60">
-          <span className="text-[9px]  sm:text-[10px] tracking-[0.65em] font-light text-black uppercase">
-            Haute Architecture
-          </span>
-        </div>
+        </span>
       </div>
 
-      {/* Top-Right Random Floating 3D Bubble Social Cluster */}
+
+      {/* Foreground Left Editorial Content (Positioned in yellow marked mid-left area) */}
       <div
         data-scroll
-        data-scroll-speed="0.18"
-        className="absolute top-18 sm:top-20 md:top-22 lg:top-24 right-6 sm:right-10 md:right-14 lg:right-20 z-30 pointer-events-none w-64 sm:w-72 md:w-80 h-44 sm:h-52"
+        data-scroll-speed="-0.08"
+        className="absolute bottom-36 sm:bottom-40 md:bottom-44 lg:bottom-56 left-6 sm:left-10 md:left-14 lg:left-40 z-20 max-w-[300px] sm:max-w-md pointer-events-auto select-none"
         style={{
-          transform: `perspective(800px) rotateY(${mouse.x * 12}deg) rotateX(${-mouse.y * 12}deg) translate3d(${mouse.x * 16}px, ${mouse.y * 12}px, 20px)`,
-          transformStyle: "preserve-3d",
+          transform: `translate3d(${mouse.x * 12}px, ${mouse.y * 10}px, 0)`,
         }}
       >
-        {/* WhatsApp (Top-Left of cluster - Official Green Circle) */}
-        <a
-          href="https://wa.me/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute top-2 left-4 sm:left-6 pointer-events-auto group/bubble w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#25D366] text-white shadow-[0_10px_24px_rgba(37,211,102,0.4),_0_2px_6px_rgba(0,0,0,0.08)] hover:shadow-[0_16px_35px_rgba(37,211,102,0.6)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 animate-bubble-1"
-          aria-label="Connect on WhatsApp"
-        >
-          <WhatsAppIcon size={20} />
-          {/* Tooltip */}
-          <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover/bubble:opacity-100 pointer-events-none transition-all duration-200 text-[9px] tracking-wider uppercase font-semibold bg-black text-white px-2 py-0.5 rounded whitespace-nowrap shadow-lg z-50">
-            WhatsApp
-          </span>
-        </a>
+        {/* Editorial Headline */}
+        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[50px] font-display font-medium text-[var(--color-black)] leading-[1.08] tracking-tight mb-2.5 sm:mb-3.5">
+          Haute Architecture
+        </h1>
 
-        {/* Instagram (Top-Right of cluster - Official Gradient Squircle Shape) */}
-        <a
-          href="https://instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute top-0 right-4 sm:right-8 pointer-events-auto group/bubble w-12 h-12 sm:w-14 sm:h-14 rounded-[16px] sm:rounded-[18px] bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow-[0_12px_28px_rgba(220,39,67,0.42),_0_2px_6px_rgba(0,0,0,0.08)] hover:shadow-[0_16px_36px_rgba(220,39,67,0.62)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 animate-bubble-2"
-          aria-label="Follow on Instagram"
-        >
-          <InstagramIcon size={24} />
-          <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover/bubble:opacity-100 pointer-events-none transition-all duration-200 text-[9px] tracking-wider uppercase font-semibold bg-black text-white px-2 py-0.5 rounded whitespace-nowrap shadow-lg z-50">
-            Instagram
-          </span>
-        </a>
-
-        {/* Facebook (Bottom-Left of cluster - Official Blue Circle) */}
-        <a
-          href="https://facebook.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute top-24 left-10 sm:left-14 pointer-events-auto group/bubble w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#1877F2] text-white shadow-[0_10px_24px_rgba(24,119,242,0.4),_0_2px_6px_rgba(0,0,0,0.08)] hover:shadow-[0_16px_35px_rgba(24,119,242,0.6)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 animate-bubble-3"
-          aria-label="Follow on Facebook"
-        >
-          <FacebookIcon size={19} />
-          <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover/bubble:opacity-100 pointer-events-none transition-all duration-200 text-[9px] tracking-wider uppercase font-semibold bg-black text-white px-2 py-0.5 rounded whitespace-nowrap shadow-lg z-50">
-            Facebook
-          </span>
-        </a>
-
-        {/* Pinterest (Bottom-Right of cluster - Official Red Circle) */}
-        <a
-          href="https://pinterest.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute top-20 right-0 sm:right-2 pointer-events-auto group/bubble w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#E60023] text-white shadow-[0_10px_24px_rgba(230,0,35,0.4),_0_2px_6px_rgba(0,0,0,0.08)] hover:shadow-[0_16px_35px_rgba(230,0,35,0.6)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 animate-bubble-4"
-          aria-label="Discover on Pinterest"
-        >
-          <PinterestIcon size={19} />
-          <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover/bubble:opacity-100 pointer-events-none transition-all duration-200 text-[9px] tracking-wider uppercase font-semibold bg-black text-white px-2 py-0.5 rounded whitespace-nowrap shadow-lg z-50">
-            Pinterest
-          </span>
-        </a>
-
-        {/* Decorative Floating Glass Micro-Bubbles */}
-        <div className="absolute top-16 left-0 w-3.5 h-3.5 rounded-full bg-white/70 border transparent border-white/90 shadow-sm animate-bubble-3 pointer-events-none" />
-        <div className="absolute top-10 right-0 w-2.5 h-2.5 rounded-full bg-white/60 border transparent border-white/80 shadow-sm animate-bubble-1 pointer-events-none" />
-        <div className="absolute bottom-2 right-16 w-3 h-3 rounded-full bg-white/60 border transparent border-white/80 shadow-sm animate-bubble-2 pointer-events-none" />
-        <div className="absolute bottom-1 left-6 w-2 h-2 rounded-full bg-white/50 border transparent border-white/70 shadow-sm animate-bubble-4 pointer-events-none" />
+        {/* Supporting Editorial Description */}
+        <p className="text-xs sm:text-[13px] md:text-sm font-light text-black/65 leading-relaxed tracking-wide max-w-xs sm:max-w-sm">
+          Curated silhouettes tailored for effortless elegance, fluid movement, and timeless modern luxury.
+        </p>
       </div>
+
+      {/* Right-Edge Fixed Social Links (Compact & Fixed) */}
+      <aside
+        aria-label="Social media links"
+        className="fixed right-0 top-1/2 -translate-y-1/2 z-40 pointer-events-auto"
+      >
+        <div className="px-2 sm:px-2.5 py-3 sm:py-3.5 flex flex-col items-center space-y-2.5 sm:space-y-3 bg-transparent hover:bg-white backdrop-blur-md rounded-l-xl sm:rounded-l-2xl border-l border-y border-black/[0.06] shadow-[0_2px_12px_rgba(0,0,0,0.04)] transition-all duration-300">
+          {/* Instagram */}
+          <div className="relative inline-flex">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex items-center justify-center p-1"
+              aria-label="Follow on Instagram"
+            >
+              <InstagramIcon
+                size={20}
+                className="w-5 h-5 text-pink-600 hover:scale-115 active:scale-95 transition-transform duration-200 cursor-pointer"
+              />
+              {/* Tooltip */}
+              <span className="absolute right-full mr-3 px-2 py-0.5 text-[10px] font-medium tracking-wide bg-black text-white rounded opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 pointer-events-none transition-all duration-200 whitespace-nowrap shadow-md z-50">
+                Instagram
+              </span>
+            </a>
+          </div>
+
+          {/* LinkedIn */}
+          <div className="relative inline-flex">
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex items-center justify-center p-1"
+              aria-label="Connect on LinkedIn"
+            >
+              <LinkedInIcon
+                size={20}
+                className="w-5 h-5 text-blue-700 hover:scale-115 active:scale-95 transition-transform duration-200 cursor-pointer"
+              />
+              {/* Tooltip */}
+              <span className="absolute right-full mr-3 px-2 py-0.5 text-[10px] font-medium tracking-wide bg-black text-white rounded opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 pointer-events-none transition-all duration-200 whitespace-nowrap shadow-md z-50">
+                LinkedIn
+              </span>
+            </a>
+          </div>
+
+          {/* WhatsApp */}
+          <div className="relative inline-flex">
+            <a
+              href="https://wa.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex items-center justify-center p-1"
+              aria-label="Chat on WhatsApp"
+            >
+              <WhatsAppIcon
+                size={20}
+                className="w-5 h-5 text-green-500 hover:scale-115 active:scale-95 transition-transform duration-200 cursor-pointer"
+              />
+              {/* Tooltip */}
+              <span className="absolute right-full mr-3 px-2 py-0.5 text-[10px] font-medium tracking-wide bg-black text-white rounded opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 pointer-events-none transition-all duration-200 whitespace-nowrap shadow-md z-50">
+                WhatsApp
+              </span>
+            </a>
+          </div>
+        </div>
+      </aside>
 
       {/* Center Model Image - Enriched, Enchanced & Magnified */}
       <div
@@ -189,7 +193,7 @@ export default function HeroSection() {
         className="absolute inset-0 flex items-end justify-center pointer-events-none z-10 opacity-100 translate-y-0"
       >
         <div
-          className="relative w-[85%] sm:w-[68%] md:w-[56%] lg:w-[48%] xl:w-[44%] 2xl:w-[40%] h-[86%] sm:h-[89%] md:h-[92%] lg:h-[95%] transition-transform duration-200 ease-out will-change-transform"
+          className="relative w-[76%] sm:w-[62%] md:w-[48%] lg:w-[40%] xl:w-[35%] 2xl:w-[31%] h-[78%] sm:h-[81%] md:h-[84%] lg:h-[87%] transition-transform duration-200 ease-out will-change-transform"
           style={{
             transform: `perspective(1200px) rotateY(${mouse.x * 7}deg) rotateX(${-mouse.y * 5}deg) translate3d(${mouse.x * 16}px, ${mouse.y * 10}px, 30px)`,
             transformStyle: "preserve-3d",
@@ -204,7 +208,7 @@ export default function HeroSection() {
             fill
             className="object-contain object-bottom select-none pointer-events-none drop-shadow-[0_25px_35px_rgba(0,0,0,0.18)] drop-shadow-[0_8px_15px_rgba(0,0,0,0.08)]"
             priority
-            sizes="(max-width: 640px) 85vw, (max-width: 1024px) 56vw, 44vw"
+            sizes="(max-width: 640px) 76vw, (max-width: 1024px) 48vw, 35vw"
           />
         </div>
       </div>

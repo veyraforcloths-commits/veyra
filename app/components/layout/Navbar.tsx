@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { SearchIcon, UserIcon, HeartIcon, CartIcon, MenuIcon, CloseIcon } from "../icons";
+import { SearchIcon, MenuIcon, CloseIcon } from "../icons";
 
 const navLinks = [
   { label: "CASUAL", href: "/casual" },
@@ -11,20 +11,48 @@ const navLinks = [
   { label: "OVERSIZED", href: "/oversized" },
 ];
 
-const actionLinks = [
-  { label: "SEARCH", icon: SearchIcon, href: "/search" },
-  { label: "LOGIN", icon: UserIcon, href: "/login" },
-  { label: "WISHLIST", icon: HeartIcon, href: "/wishlist" },
+const rightLinks = [
+  { label: "BLOGS", href: "/blogs" },
+  { label: "LOOKBOOK", href: "/lookbook" },
+  { label: "ABOUT", href: "/about" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Scrolled background styling threshold
+      setScrolled(currentScrollY > 40);
+
+      // Always show at top of page
+      if (currentScrollY < 60) {
+        setVisible(true);
+        lastScrollY.current = currentScrollY;
+        return;
+      }
+
+      // Delta threshold to ignore minor vibrations / elastic bounce
+      const diff = currentScrollY - lastScrollY.current;
+      if (Math.abs(diff) > 6) {
+        if (diff > 0 && currentScrollY > 80) {
+          // Scrolling down -> hide navbar
+          setVisible(false);
+        } else if (diff < 0) {
+          // Scrolling up -> show navbar
+          setVisible(true);
+        }
+        lastScrollY.current = currentScrollY;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -39,13 +67,15 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 inset-x-0 z-50 py-2 md:py-2.5 transition-all duration-300 backdrop-blur-md ${
+        className={`fixed top-0 inset-x-0 z-50 py-2 md:py-2.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] backdrop-blur-md will-change-transform ${
+          visible || mobileOpen ? "translate-y-0" : "-translate-y-full pointer-events-none"
+        } ${
           scrolled
-            ? "bg-[var(--color-cream)]/80 border-b border-black/[0.06] shadow-[0_4px_24px_-4px_rgba(0,0,0,0.05)]"
+            ? "bg-[var(--color-cream)]/85 border-b border-black/[0.06] shadow-[0_4px_24px_-4px_rgba(0,0,0,0.05)]"
             : "bg-[var(--color-cream)]/60 border-b border-black/[0.04]"
         }`}
       >
-        <nav className="w-full max-w-[1600px] mx-auto flex items-center justify-between px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 h-10 md:h-12">
+        <nav className="relative w-full max-w-[1600px] mx-auto flex items-center justify-between px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 h-10 md:h-12">
           {/* Left Nav */}
           <ul className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => (
@@ -70,29 +100,39 @@ export default function Navbar() {
             <MenuIcon size={22} strokeWidth={1.2} />
           </button>
 
+          {/* Center Brand Logo / Name */}
+          <Link
+            href="/"
+            className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center group py-1 select-none"
+            aria-label="VEYRA Homepage"
+          >
+            <span className="text-lg sm:text-xl md:text-2xl font-display font-bold tracking-[0.24em] text-[var(--color-black)] transition-transform duration-300 group-hover:scale-[1.02]">
+              VEYRA
+            </span>
+          </Link>
 
-
-          {/* Right Actions */}
-          <div className="flex items-center gap-4 lg:gap-6">
-            {actionLinks.map((item) => (
+          {/* Right Links (Editorial & Search) */}
+          <div className="flex items-center gap-5 lg:gap-7">
+            {rightLinks.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className="hidden md:flex items-center gap-1.5 text-[11px] font-medium tracking-[0.15em] text-[var(--color-charcoal)] hover:text-black transition-colors duration-300 group"
+                className="hidden md:inline-block text-[11px] lg:text-xs font-medium tracking-[0.2em] text-[var(--color-charcoal)] hover:text-black transition-colors duration-300 relative group"
               >
-                <item.icon size={16} strokeWidth={1.3} />
-                <span>{item.label}</span>
+                {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
 
-            {/* Cart - always visible */}
+            {/* Search - accessible on desktop with text, on mobile as icon */}
             <Link
-              href="/cart"
-              className="flex items-center gap-1.5 text-[11px] font-medium tracking-[0.15em] text-[var(--color-charcoal)] hover:text-black transition-colors duration-300"
+              href="/search"
+              className="flex items-center gap-1.5 text-[11px] lg:text-xs font-medium tracking-[0.2em] text-[var(--color-charcoal)] hover:text-black transition-colors duration-300 relative group"
+              aria-label="Search"
             >
-              <CartIcon size={16} strokeWidth={1.3} />
-              <span className="hidden md:inline">CART</span>
-              <span className="text-[10px]">(0)</span>
+              <SearchIcon size={16} strokeWidth={1.3} />
+              <span className="hidden md:inline">SEARCH</span>
+              <span className="hidden md:inline absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-300 group-hover:w-full" />
             </Link>
           </div>
         </nav>
@@ -131,17 +171,24 @@ export default function Navbar() {
           </ul>
 
           <div className="mt-12 pt-8 border-t border-black/10 space-y-5">
-            {actionLinks.map((item) => (
+            {rightLinks.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-3 text-sm tracking-[0.15em] text-[var(--color-charcoal)]"
+                className="block text-sm tracking-[0.2em] text-[var(--color-charcoal)] hover:text-black transition-colors"
               >
-                <item.icon size={18} />
-                <span>{item.label}</span>
+                {item.label}
               </Link>
             ))}
+            <Link
+              href="/search"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center gap-2.5 text-sm tracking-[0.2em] text-[var(--color-charcoal)] hover:text-black transition-colors"
+            >
+              <SearchIcon size={18} />
+              <span>SEARCH</span>
+            </Link>
           </div>
         </nav>
       </div>

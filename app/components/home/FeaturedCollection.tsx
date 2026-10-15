@@ -92,29 +92,7 @@ export default function FeaturedCollection() {
       : products.filter((p) => p.category === activeTab);
 
   return (
-    <section className="relative w-full bg-[var(--color-cream)] pt-12 pb-24 border-t border-black/[0.06] overflow-hidden">
-      {/* 1. Atelier Marquee Ribbon Ticker */}
-      <div className="w-full overflow-hidden border-b border-black/[0.06] pb-4 mb-16 select-none opacity-85">
-        <div className="flex w-max animate-marquee whitespace-nowrap gap-12 text-[10px] md:text-[11px] tracking-[0.42em] uppercase font-light text-black/70">
-          <span>HAUTE ARCHITECTURE • ATELIER 2025</span>
-          <span>✦</span>
-          <span>100% ORGANIC NORMANDY LINEN</span>
-          <span>✦</span>
-          <span>CRAFTED IN PARIS &amp; FLORENCE</span>
-          <span>✦</span>
-          <span>TIMELESS FORM • ZERO SYNTHETICS</span>
-          <span>✦</span>
-          <span>HAUTE ARCHITECTURE • ATELIER 2025</span>
-          <span>✦</span>
-          <span>100% ORGANIC NORMANDY LINEN</span>
-          <span>✦</span>
-          <span>CRAFTED IN PARIS &amp; FLORENCE</span>
-          <span>✦</span>
-          <span>TIMELESS FORM • ZERO SYNTHETICS</span>
-          <span>✦</span>
-        </div>
-      </div>
-
+    <section className="relative w-full bg-[var(--color-cream)] pt-20 sm:pt-28 pb-24 border-t border-black/[0.06] overflow-hidden">
       <div className="max-w-[1600px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
         {/* 2. Section Header & Category Filters */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
@@ -361,41 +339,6 @@ export default function FeaturedCollection() {
             </div>
           </div>
         </div>
-
-        {/* 5. Minimalist Editorial Footer & Newsletter */}
-        <footer className="mt-20 pt-12 border-t border-black/[0.08] flex flex-col md:flex-row items-center justify-between gap-8 text-black/60 text-xs select-none">
-          <div className="flex items-center gap-3">
-            <span className="font-display font-bold text-lg tracking-wider text-black">
-              VEYRA
-            </span>
-            <span className="text-black/30">|</span>
-            <span className="text-[10px] tracking-[0.28em] uppercase font-light text-black/70">
-              ATELIER PARIS • 2025
-            </span>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-6 text-[11px] tracking-[0.2em] uppercase font-medium text-black/70">
-            <Link href="/shop" className="hover:text-black transition-colors">
-              COLLECTIONS
-            </Link>
-            <Link href="/about" className="hover:text-black transition-colors">
-              ATELIER
-            </Link>
-            <Link href="/lookbook" className="hover:text-black transition-colors">
-              LOOKBOOK
-            </Link>
-            <Link href="/stores" className="hover:text-black transition-colors">
-              BOUTIQUES
-            </Link>
-            <Link href="/concierge" className="hover:text-black transition-colors">
-              CONCIERGE
-            </Link>
-          </div>
-
-          <p className="text-[10px] tracking-widest text-black/40 uppercase">
-            © 2025 VEYRA. ALL RIGHTS RESERVED.
-          </p>
-        </footer>
       </div>
     </section>
   );
